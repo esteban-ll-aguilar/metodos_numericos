@@ -81,17 +81,23 @@ clc;clear;format long;
 % disp('El polinomio es: ' + polinomio)
 
 
-% --------------------7  Interacciones -------------------------------
-funcion = @(x) sin(x)-2*x.^4+0.5;
-a = -1;
-b = 1;
-N = 1001;
-[a,b, interacciones] = LocalizandoRaices(funcion,a,b, N);
-disp(['numero de interacciones: ', num2str(interacciones)])
-disp('extremo iz  a: ')
-disp(a)
-disp('extremo der b: ')
-disp(b)
+% --------------------8  Localizar Raices -------------------------------
+% funcion = @(x) sin(x)-2*x.^4+0.5;
+% a = -1;
+% b = 1;
+% N = 1001;
+% [a,b, interacciones] = LocalizandoRaices(funcion,a,b, N);
+% disp(['numero de interacciones: ', num2str(interacciones)])
+% disp('extremo iz  a: ')
+% disp(a)
+% disp('extremo der b: ')
+% disp(b)
 
+% --------------------9  Suma Serie Geometrica -------------------------------
+
+[suma, n] = SumaSerieGeometrica(0.5);
+% Mostrar resultados (opcional)
+fprintf('Suma final: %.15f\n', suma);
+fprintf('Número de términos sumados: %d\n', n);
 
 
