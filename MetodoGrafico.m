@@ -17,12 +17,14 @@ function [a, b, n_veces_aplicado, error_final] = MetodoGrafico(funcion, a, b, N,
         n_veces_aplicado = n_veces_aplicado + 1;
         h = (b - a) / N;
         x = (a:h:b);
-        fx = funcion(x);
 
         signo_cambio = false;
 
         for i = 1:N
-            if fx(i) * fx(i + 1) < 0
+            f1 = funcion(x(i));
+            f2 = funcion(x(i + 1));
+
+            if f1 * f2 < 0
                 a = x(i);
                 b = x(i + 1);
                 error_final = abs(b - a);

@@ -1,7 +1,7 @@
 function [xfinal, interacciones] = MetodoNewtonRaphson(funcion, dfuncion, x0, error)
     % METODONEWTONRAPHSON   
-    interacciones = 1;
-    x_lista = x0;
+    interacciones = 0;
+    x_lista = [];
     x_anterior = x0;
     
     while true
@@ -11,17 +11,19 @@ function [xfinal, interacciones] = MetodoNewtonRaphson(funcion, dfuncion, x0, er
         
         %x_ctual es igual a x+1
         x_actual = x_anterior - (fn / dfn); % nueva aproximación
+        
+        % agregamos a la lista 
+        x_lista = [x_lista; x_actual];
 
+        interacciones = interacciones + 1;
         %se valida el error antes de continuar para evitar la integracion
         %de x_actual a la lista
         if abs(x_actual - x_anterior) < error
             break
         end
-        % agrwegamos a la lista 
-        x_lista = [x_lista; x_actual];
               
         x_anterior = x_actual; % actualizar
-        interacciones = interacciones + 1;
+        
     end
     
     xfinal = x_actual;
