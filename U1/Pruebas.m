@@ -95,9 +95,19 @@ clc;clear;format long;
 
 % --------------------9  Suma Serie Geometrica -------------------------------
 
-[suma, n] = SumaSerieGeometrica(0.5);
-% Mostrar resultados (opcional)
-fprintf('Suma final: %.15f\n', suma);
-fprintf('Número de términos sumados: %d\n', n);
+% [suma, n] = SumaSerieGeometrica(0.5);
+% % Mostrar resultados (opcional)
+% fprintf('Suma final: %.15f\n', suma);
+% fprintf('Número de términos sumados: %d\n', n);
 
 
+% --------------------10 Metodo de Steffen -------------------------------
+% funcion = @(x) x.^3 - 6*x.^2+10*x-20;
+% funcion = @(x) x.^3 - 6*x.^2 + 10*x -20; -> se despeja la ecuacion
+funcion = @(x) 20/(x.^2 - 6*x + 10);
+x0=1;
+error=0.001;
+
+[xfinal, interacciones] = MetodoSteffensen(funcion, x0, error, 500);
+fprintf('Suma final: %.15f\n', xfinal);
+fprintf('Número de términos sumados: %d\n', interacciones);
