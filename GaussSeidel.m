@@ -11,6 +11,7 @@ function [n_interacciones, x_solucion] = GaussSeidel(matriz_ec, v_resultados, to
             % cambiar los valores de x
             x(i) = (v_resultados(i) + lamba) / matriz_ec(i,i);
             %calcular los errores
+            disp(x_antiguo)
             errores = abs(x-x_antiguo);
         end
         if all(errores <= tolerancia)
