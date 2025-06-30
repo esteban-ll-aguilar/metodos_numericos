@@ -33,8 +33,8 @@ function f_interpolada = MetodoDiferenciasDivididas(x, fx, x_interp)
         formula = formula + " + " + num2str(coef) + "*" + termino;
     end
 
-    disp("Polinomio interpolante:")
-    disp(formula)
+    % disp("Polinomio interpolante:")
+    % disp(formula)
     % Mostrar resultado
-    disp("Resultado de f(" + num2str(x_interp) + ") = " + num2str(f_interpolada))
+    % disp("Resultado de f(" + num2str(x_interp) + ") = " + num2str(f_interpolada))
 end

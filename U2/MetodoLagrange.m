@@ -1,4 +1,4 @@
-function MetodoLagrange(puntos_x, puntos_y, punto_a_evaluar)
+function valor_evaluado = MetodoLagrange(puntos_x, puntos_y, punto_a_evaluar)
     % Verifica que ambos vectores tengan la misma cantidad de puntos
     if length(puntos_x) ~= length(puntos_y)
         error('Los vectores puntos_x y puntos_y deben tener la misma longitud.');
@@ -8,7 +8,7 @@ function MetodoLagrange(puntos_x, puntos_y, punto_a_evaluar)
     orden_maximo_polinomio = cantidad_puntos - 1;
 
     for orden_actual = 1:orden_maximo_polinomio
-        fprintf('--- Polinomio P%d ---\n', orden_actual);
+        % fprintf('--- Polinomio P%d ---\n', orden_actual);
 
         % Selecciona los puntos para construir el polinomio de orden actual
         subconjunto_x = puntos_x(1:orden_actual + 1);
@@ -45,49 +45,43 @@ function MetodoLagrange(puntos_x, puntos_y, punto_a_evaluar)
 
             % Sumar el término al polinomio simplificado
             termino_lagrange = termino_lagrange * (y_actual / denominador_lagrange);
-            polinomio_simplificado = sumarPolinomios(polinomio_simplificado, termino_lagrange);
+            polinomio_simplificado = SumarPolinomios(polinomio_simplificado, termino_lagrange);
         end
 
         % Mostrar el polinomio original (no simplificado)
-        fprintf('Polinomio original:\nP%d(x) = %s\n\n', orden_actual, polinomio_original_como_texto);
+        % fprintf('Polinomio original:\nP%d(x) = %s\n\n', orden_actual, polinomio_original_como_texto);
 
         % Mostrar el polinomio simplificado (como suma de monomios)
-        fprintf('Polinomio simplificado:\nP%d(x) = ', orden_actual);
-        for i = 1:length(polinomio_simplificado)
-            coeficiente = polinomio_simplificado(i);
-            grado = length(polinomio_simplificado) - i;
-
-            if abs(coeficiente) < 1e-10
-                continue;
-            end
-
-            if coeficiente > 0 && i > 1
-                fprintf(' + ');
-            elseif coeficiente < 0
-                fprintf(' - ');
-                coeficiente = abs(coeficiente);
-            end
-
-            if grado == 0
-                fprintf('%.3f', coeficiente);
-            elseif grado == 1
-                fprintf('%.3fx', coeficiente);
-            else
-                fprintf('%.3fx^%d', coeficiente, grado);
-            end
-        end
-        fprintf('\n');
+        % fprintf('Polinomio simplificado:\nP%d(x) = ', orden_actual);
+        % for i = 1:length(polinomio_simplificado)
+        %     coeficiente = polinomio_simplificado(i);
+        %     grado = length(polinomio_simplificado) - i;
+        % 
+        %     if abs(coeficiente) < 1e-10
+        %         continue;
+        %     end
+        % 
+        %     if coeficiente > 0 && i > 1
+        %         fprintf(' + ');
+        %     elseif coeficiente < 0
+        %         fprintf(' - ');
+        %         coeficiente = abs(coeficiente);
+        %     end
+        % 
+        %     if grado == 0
+        %         fprintf('%.3f', coeficiente);
+        %     elseif grado == 1
+        %         fprintf('%.3fx', coeficiente);
+        %     else
+        %         fprintf('%.3fx^%d', coeficiente, grado);
+        %     end
+        % end
+        % fprintf('\n');
 
         % Evaluar el polinomio en el punto solicitado
         valor_evaluado = polyval(polinomio_simplificado, punto_a_evaluar);
-        fprintf('P%d(%.2f) = %.6f\n\n', orden_actual, punto_a_evaluar, valor_evaluado);
+        % fprintf('P%d(%.2f) = %.6f\n\n', orden_actual, punto_a_evaluar, valor_evaluado);
     end
 end
 
-% Función auxiliar que suma dos polinomios representados por sus coeficientes
-function resultado = sumarPolinomios(polinomio1, polinomio2)
-    longitud_maxima = max(length(polinomio1), length(polinomio2));
-    polinomio1 = [zeros(1, longitud_maxima - length(polinomio1)), polinomio1];
-    polinomio2 = [zeros(1, longitud_maxima - length(polinomio2)), polinomio2];
-    resultado = polinomio1 + polinomio2;
-end
+
