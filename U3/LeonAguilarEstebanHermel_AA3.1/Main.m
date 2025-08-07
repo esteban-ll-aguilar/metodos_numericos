@@ -19,29 +19,3 @@ disp(table(array2table(xEuler), array2table(yEuler),...
            array2table(yHeun), array2table(yRugeKutta),...
     'VariableNames',{'xEuler', 'Resultados Euler', 'Resultados Heun', 'Resultados Ruge Kutta'}))
 
-
-
-% 
-% 
-% funcion_der = @(x,y) 0.4*x*y;
-% a = 1;
-% b = 2;
-% y_inicial = 1;
-% N = 10;
-% 
-% [xeuler , yeuler] = MetodoEuler(a,b,N,y_inicial, funcion_der);
-% [xheun ,  yheun]  = MetodoHeun(a,b,N,y_inicial, funcion_der);
-% [xrungeK ,yrungeK]= MetodoRungeKutta(a,b,N,y_inicial, funcion_der);
-% 
-% tabla =  table(xeuler', yeuler',yheun', yrungeK', 'VariableNames',{ ...
-%         'xe','yEuler', 'yHeun', 'yRugenK4'});
-% 
-% disp(tabla);
-% 
-% plot(xeuler, yeuler);
-% hold on;
-% plot(xheun, yheun);
-% hold on;
-% plot(xrungeK, yrungeK)
-% legend('Método de Euler', 'Método de Heun', 'Metodo de Rugen Kutta');
-% hold off;
